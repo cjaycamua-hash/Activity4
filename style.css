@@ -1,0 +1,595 @@
+/* ==========================================================
+   Calvin John Camua - Portfolio
+   Style: minimal black and white, monospace labels, hairline
+   borders, dotted corners, and a dithered portrait.
+   ========================================================== */
+
+/* ---------- Color tokens: light theme (default) ---------- */
+:root {
+  --bg: #FFFFFF;
+  --soft: #F6F6F6;        /* thumbnail background */
+  --ink: #111111;         /* headings and strong text */
+  --body: #444444;        /* paragraph text */
+  --muted: #8A8A8A;       /* labels */
+  --line: #E6E6E6;        /* hairline borders */
+  --dot: rgba(0, 0, 0, 0.18);
+
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+}
+
+/* ---------- Color tokens: dark theme ---------- */
+:root[data-theme="dark"] {
+  --bg: #0E0E0E;
+  --soft: #171717;
+  --ink: #F2F2F2;
+  --body: #BDBDBD;
+  --muted: #7C7C7C;
+  --line: #262626;
+  --dot: rgba(255, 255, 255, 0.2);
+}
+
+/* ---------- Base ---------- */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--body);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dotted decoration in two corners of the page, fading out toward the middle */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  z-index: 0;
+  width: 40vw;
+  height: 45vh;
+  background-image: radial-gradient(circle, var(--dot) 1px, transparent 1.5px);
+  background-size: 14px 14px;
+  pointer-events: none;
+}
+
+body::before {
+  top: 0;
+  right: 0;
+  -webkit-mask-image: linear-gradient(to bottom left, #000, transparent 70%);
+  mask-image: linear-gradient(to bottom left, #000, transparent 70%);
+}
+
+body::after {
+  bottom: 0;
+  left: 0;
+  -webkit-mask-image: linear-gradient(to top right, #000, transparent 70%);
+  mask-image: linear-gradient(to top right, #000, transparent 70%);
+}
+
+main,
+.site-footer {
+  position: relative;
+  z-index: 1;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-weight: 400;
+}
+
+p {
+  margin: 0 0 1rem;
+  max-width: 60ch;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Shared centered wrapper (narrow column, like a page in a book) */
+.container {
+  width: min(100% - 2.5rem, 720px);
+  margin-inline: auto;
+}
+
+/* Visible keyboard focus */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/* ---------- 1. Header / Navigation ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  transition: background-color 0.3s ease;
+}
+
+.site-header .container {
+  width: min(100% - 2.5rem, 960px);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  padding-block: 0.9rem;
+}
+
+.brand {
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.nav-list a {
+  color: var(--body);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-list a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+/* Theme toggle: a small circle that is half filled, like a moon phase */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--ink);
+}
+
+.toggle-icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  background: linear-gradient(90deg, var(--ink) 50%, transparent 50%);
+  transition: transform 0.4s ease;
+}
+
+:root[data-theme="dark"] .toggle-icon {
+  transform: rotate(180deg);
+}
+
+/* ---------- 2. Hero / About ---------- */
+.hero {
+  padding-block: 4.5rem 4rem;
+  scroll-margin-top: 4rem;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1fr;
+  gap: 2.75rem;
+  align-items: center;
+}
+
+/* Black and white portrait with a fine dot pattern over it */
+.portrait {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 600 / 640;
+  background: var(--soft);
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.15);
+}
+
+.portrait::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, transparent 0.7px, rgba(255, 255, 255, 0.3) 1.1px);
+  background-size: 3px 3px;
+  pointer-events: none;
+}
+
+/* Small greeting chip with a cursor, above the name */
+.hello {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  padding-left: 0.9rem;
+}
+
+.hello-chip {
+  display: inline-block;
+  padding: 0.4rem 0.7rem;
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.cursor {
+  position: absolute;
+  left: 0;
+  bottom: -0.5rem;
+  color: var(--ink);
+}
+
+.hero h1 {
+  margin-bottom: 1.25rem;
+  font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* Link row: github ↗  linkedin ↗  instagram ↗ */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin-top: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.social-links a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.social-links a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Quick facts strip: hairline grid */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 4rem;
+  background: var(--line);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.facts li {
+  padding: 1.25rem 1.25rem 1.1rem;
+  background: var(--bg);
+  transition: background-color 0.3s ease;
+}
+
+.facts li:first-child,
+.facts li:nth-child(4) {
+  padding-left: 0;
+}
+
+.fact-title,
+.fact-number {
+  display: block;
+  color: var(--ink);
+  font-family: var(--font-mono);
+}
+
+.fact-title {
+  margin-bottom: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.fact-number {
+  margin-bottom: 0.25rem;
+  font-size: 1.6rem;
+  font-weight: 300;
+}
+
+.fact-label {
+  display: block;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------- Section headings (shared by Projects and Contact) ---------- */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-head h2 {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.section-link {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.section-link:hover {
+  color: var(--ink);
+}
+
+/* ---------- 3. Projects ---------- */
+.projects {
+  padding-block: 3rem 4.5rem;
+  scroll-margin-top: 4rem;
+}
+
+.project-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  transition: border-color 0.2s ease, background-color 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--ink);
+}
+
+/* Dotted thumbnail with one solid shape in the middle */
+.thumb {
+  position: relative;
+  min-height: 150px;
+  background-color: var(--soft);
+  background-image: radial-gradient(circle, var(--dot) 1px, transparent 1.5px);
+  background-size: 10px 10px;
+  border-right: 1px solid var(--line);
+}
+
+.thumb::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: var(--ink);
+}
+
+.thumb-circle::before {
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+  border-radius: 50%;
+}
+
+/* QR code thumbnail: no center shape, just the image */
+.qr-thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: #fff;
+  background-image: none;
+}
+
+.qr-thumb::before {
+  display: none;
+}
+
+.qr-thumb img {
+  width: 130px;
+  height: 130px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1.5rem;
+}
+
+.card h3 {
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.1rem;
+}
+
+.tags li {
+  padding: 0.1rem 0.55rem;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+}
+
+.card-link {
+  margin-top: auto;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-underline-offset: 4px;
+}
+
+.card-link:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* ---------- 4. Footer / Contact ---------- */
+.site-footer {
+  padding-block: 3rem 2rem;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 4rem;
+}
+
+.footer-note {
+  margin-bottom: 0.5rem;
+  color: var(--muted);
+}
+
+.email {
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 4vw, 1.35rem);
+  text-underline-offset: 6px;
+  overflow-wrap: anywhere;
+}
+
+.email:hover {
+  text-decoration-thickness: 2px;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.copyright {
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+/* ---------- Responsive: tablets ---------- */
+@media (max-width: 800px) {
+  .hero {
+    padding-block: 3rem 3rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .portrait {
+    width: min(100%, 360px);
+  }
+}
+
+/* ---------- Responsive: phones ---------- */
+@media (max-width: 560px) {
+  /* Navigation drops to its own row under the brand */
+  .site-header nav {
+    order: 3;
+    width: 100%;
+  }
+
+  /* Facts become two columns */
+  .facts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .facts li:nth-child(odd) {
+    padding-left: 0;
+  }
+
+  .facts li:nth-child(even) {
+    padding-left: 1.25rem;
+  }
+
+  /* Project cards stack: thumbnail on top */
+  .card {
+    grid-template-columns: 1fr;
+  }
+
+  .thumb {
+    min-height: 110px;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .projects {
+    padding-block: 2.5rem 3.25rem;
+  }
+}
+
+/* ---------- Respect reduced-motion settings ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition: none !important;
+  }
+}

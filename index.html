@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Viewport tag makes the page scale correctly on phones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Calvin John Camua, an IT student who builds websites and apps.">
+  <title>Calvin John Camua | Portfolio</title>
+
+  <!-- Fonts: JetBrains Mono for headings and labels, Inter for body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <!-- Loaded in the head so the saved theme is applied before the page paints -->
+  <script src="script.js"></script>
+</head>
+
+<body>
+
+  <!-- 1. Header / Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#about">Calvin John Camua</a>
+
+      <nav aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Dark / light mode toggle (handled in script.js) -->
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false"
+        aria-label="Switch to dark mode">
+        <span class="toggle-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- 2. Hero / About Me -->
+    <section id="about" class="hero">
+      <div class="container">
+        <div class="hero-grid">
+
+          <figure class="portrait">
+            <img src="2x2.jpg" width="600" height="640" alt="Portrait of Calvin John Camua">
+          </figure>
+
+          <div class="hero-text">
+
+            <h1>Calvin John Camua</h1>
+            <p>
+              I'm an IT student who builds websites and apps. I like clean layouts,
+              tidy code, and learning by doing.
+            </p>
+            <p>
+              Lately that has meant moving a Cooperative website from MySQL to Firebase
+              and building its mobile companion in MIT App Inventor.
+            </p>
+
+          </div>
+        </div>
+
+        <ul class="facts">
+          <li>
+            <span class="fact-title">Bulacan State University</span>
+            <span class="fact-label">IT student</span>
+          </li>
+          <li>
+            <span class="fact-title">Web + Mobile</span>
+            <span class="fact-label">What I build</span>
+          </li>
+          <li>
+            <span class="fact-title">Firebase</span>
+            <span class="fact-label">Latest migration</span>
+          </li>
+          <li>
+            <span class="fact-number">2</span>
+            <span class="fact-label">Projects</span>
+          </li>
+          <li>
+            <span class="fact-number">2</span>
+            <span class="fact-label">Platforms</span>
+          </li>
+          <li>
+            <span class="fact-number">1</span>
+            <span class="fact-label">Database migration</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="projects" class="projects">
+      <div class="container">
+        <div class="section-head">
+          <h2>Projects</h2>
+        </div>
+
+        <div class="project-list">
+          <article class="card">
+            <div class="thumb thumb-circle" aria-hidden="true"></div>
+            <div class="card-body">
+              <h3>Cooperative Survey Website</h3>
+              <p>A cooperative website whose database was migrated from MySQL to Firebase.</p>
+              <ul class="tags">
+                <li>Web</li>
+                <li>Firebase</li>
+              </ul>
+              <a class="card-link" href="https://camua3hg1.infinityfreeapp.com/Activity6/member/login.php">view website
+                <span aria-hidden="true">&#8599;</span></a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="thumb qr-thumb">
+              <img src="qr.png" width="130" height="130" alt="QR code to open the mobile app">
+            </div>
+            <div class="card-body">
+              <h3>Survey Mobile App</h3>
+              <p>A mobile app built with MIT App Inventor for the same survey project.</p>
+              <ul class="tags">
+                <li>Mobile</li>
+                <li>MIT App Inventor</li>
+              </ul>
+              <span class="card-link">scan the QR code to open the app</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="contact" class="site-footer">
+    <div class="container">
+      <div class="section-head">
+        <h2>Contact</h2>
+      </div>
+
+      <p class="footer-note">For projects, collabs, and everything else, reach me at</p>
+      <a class="email" href="mailto:calvinjohn.c12@gmail.com">calvinjohn.c12@gmail.com
+      </a>
+
+      <ul class="social-links">
+        <li><a href="https://github.com/cjayy-toyahh">github <span aria-hidden="true">&#8599;</span></a></li>
+        <li><a href="https://www.facebook.com/calvincamua1">facebook <span aria-hidden="true">&#8599;</span></a></li>
+      </ul>
+
+      <div class="footer-bottom">
+        <nav aria-label="Footer navigation">
+          <ul class="nav-list">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">Back to top &#8593;</a></li>
+          </ul>
+        </nav>
+        <p class="copyright">Calvin John Camua</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
