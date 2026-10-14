@@ -1,6 +1,4 @@
-
 const STORAGE_KEY = 'portfolio-theme';
-
 
 function getSavedTheme() {
   try {
@@ -13,7 +11,6 @@ function saveTheme(theme) {
   try {
     localStorage.setItem(STORAGE_KEY, theme);
   } catch (error) {
-    // Nothing to do: the theme simply will not be remembered
   }
 }
 
