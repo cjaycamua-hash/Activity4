@@ -1,24 +1,17 @@
-/* ==========================================================
-   Calvin John Camua - Portfolio
-   Style: minimal black and white, monospace labels, hairline
-   borders, dotted corners, and a dithered portrait.
-   ========================================================== */
 
-/* ---------- Color tokens: light theme (default) ---------- */
 :root {
   --bg: #FFFFFF;
-  --soft: #F6F6F6;        /* thumbnail background */
-  --ink: #111111;         /* headings and strong text */
-  --body: #444444;        /* paragraph text */
-  --muted: #8A8A8A;       /* labels */
-  --line: #E6E6E6;        /* hairline borders */
+  --soft: #F6F6F6;       
+  --ink: #111111;      
+  --body: #444444;      
+  --muted: #8A8A8A;     
+  --line: #E6E6E6;        
   --dot: rgba(0, 0, 0, 0.18);
 
   --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
 }
 
-/* ---------- Color tokens: dark theme ---------- */
 :root[data-theme="dark"] {
   --bg: #0E0E0E;
   --soft: #171717;
@@ -29,7 +22,6 @@
   --dot: rgba(255, 255, 255, 0.2);
 }
 
-/* ---------- Base ---------- */
 * {
   box-sizing: border-box;
 }
@@ -48,7 +40,6 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Dotted decoration in two corners of the page, fading out toward the middle */
 body::before,
 body::after {
   content: "";
@@ -108,20 +99,17 @@ ul {
   padding: 0;
 }
 
-/* Shared centered wrapper (narrow column, like a page in a book) */
 .container {
   width: min(100% - 2.5rem, 720px);
   margin-inline: auto;
 }
 
-/* Visible keyboard focus */
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 3px;
 }
 
-/* ---------- 1. Header / Navigation ---------- */
 .site-header {
   position: sticky;
   top: 0;
@@ -172,7 +160,6 @@ button:focus-visible {
   border-bottom-color: var(--ink);
 }
 
-/* Theme toggle: a small circle that is half filled, like a moon phase */
 .theme-toggle {
   display: flex;
   align-items: center;
@@ -203,7 +190,6 @@ button:focus-visible {
   transform: rotate(180deg);
 }
 
-/* ---------- 2. Hero / About ---------- */
 .hero {
   padding-block: 4.5rem 4rem;
   scroll-margin-top: 4rem;
@@ -216,7 +202,6 @@ button:focus-visible {
   align-items: center;
 }
 
-/* Black and white portrait with a fine dot pattern over it */
 .portrait {
   position: relative;
   margin: 0;
@@ -240,7 +225,6 @@ button:focus-visible {
   pointer-events: none;
 }
 
-/* Small greeting chip with a cursor, above the name */
 .hello {
   position: relative;
   display: inline-block;
@@ -274,7 +258,6 @@ button:focus-visible {
   letter-spacing: -0.02em;
 }
 
-/* Link row: github ↗  linkedin ↗  instagram ↗ */
 .social-links {
   display: flex;
   flex-wrap: wrap;
@@ -296,7 +279,6 @@ button:focus-visible {
   text-underline-offset: 4px;
 }
 
-/* Quick facts strip: hairline grid */
 .facts {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -347,7 +329,6 @@ button:focus-visible {
   text-transform: uppercase;
 }
 
-/* ---------- Section headings (shared by Projects and Contact) ---------- */
 .section-head {
   display: flex;
   align-items: baseline;
@@ -377,7 +358,6 @@ button:focus-visible {
   color: var(--ink);
 }
 
-/* ---------- 3. Projects ---------- */
 .projects {
   padding-block: 3rem 4.5rem;
   scroll-margin-top: 4rem;
@@ -400,7 +380,6 @@ button:focus-visible {
   border-color: var(--ink);
 }
 
-/* Dotted thumbnail with one solid shape in the middle */
 .thumb {
   position: relative;
   min-height: 150px;
@@ -425,7 +404,6 @@ button:focus-visible {
   border-radius: 50%;
 }
 
-/* QR code thumbnail: no center shape, just the image */
 .qr-thumb {
   display: flex;
   align-items: center;
@@ -488,7 +466,6 @@ button:focus-visible {
   text-decoration-thickness: 2px;
 }
 
-/* ---------- 4. Footer / Contact ---------- */
 .site-footer {
   padding-block: 3rem 2rem;
   border-top: 1px solid var(--line);
@@ -530,7 +507,6 @@ button:focus-visible {
   font-size: 0.75rem;
 }
 
-/* ---------- Responsive: tablets ---------- */
 @media (max-width: 800px) {
   .hero {
     padding-block: 3rem 3rem;
@@ -548,13 +524,11 @@ button:focus-visible {
 
 /* ---------- Responsive: phones ---------- */
 @media (max-width: 560px) {
-  /* Navigation drops to its own row under the brand */
   .site-header nav {
     order: 3;
     width: 100%;
   }
 
-  /* Facts become two columns */
   .facts {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -567,7 +541,6 @@ button:focus-visible {
     padding-left: 1.25rem;
   }
 
-  /* Project cards stack: thumbnail on top */
   .card {
     grid-template-columns: 1fr;
   }
@@ -583,7 +556,6 @@ button:focus-visible {
   }
 }
 
-/* ---------- Respect reduced-motion settings ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
